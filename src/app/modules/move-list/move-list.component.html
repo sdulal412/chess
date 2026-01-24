@@ -1,0 +1,61 @@
+<div class="move-list-wrapper">
+  <div class="nav-header">
+    <button
+      class="nav-sq-btn"
+      title="First Move"
+      (click)="showPreviousPosition(0)"
+      [disabled]="gameHistoryPointer === 0"
+    >
+      ⏮️
+    </button>
+    <button
+      class="nav-sq-btn"
+      title="Previous Move"
+      [disabled]="gameHistoryPointer === 0"
+      (click)="showPreviousPosition(gameHistoryPointer - 1)"
+    >
+      ⬅️
+    </button>
+    <button
+      class="nav-sq-btn"
+      title="Next Move"
+      (click)="showPreviousPosition(gameHistoryPointer + 1)"
+      [disabled]="gameHistoryPointer === gameHistoryLength - 1"
+    >
+      ➡️
+    </button>
+    <button
+      class="nav-sq-btn"
+      title="Current Position"
+      (click)="showPreviousPosition(gameHistoryLength - 1)"
+      [disabled]="gameHistoryPointer === gameHistoryLength - 1"
+    >
+      ⏭️
+    </button>
+  </div>
+
+  <div class="moves-scroll-area" #scrollContainer>
+    <div
+    #moveRow
+    class="move-row"
+    *ngFor="let move of moveList; let i = index"
+    >
+      <span class="num">{{ i + 1 }}.</span>
+      <div
+        class="move-btn"
+        (click)="showPreviousPosition(i * 2 + 1)"
+        [ngClass]="{ active: i * 2 + 1 === gameHistoryPointer }"
+      >
+        {{ move[0] }}
+      </div>
+      <div
+        class="move-btn"
+        *ngIf="move[1]"
+        (click)="showPreviousPosition(i * 2 + 2)"
+        [ngClass]="{ active: i * 2 + 2 === gameHistoryPointer }"
+      >
+        {{ move[1] }}
+      </div>
+    </div>
+  </div>
+</div>
