@@ -17,7 +17,7 @@
 
 ## <a name="introduction">Introduction</a>
 
-An online chess game created with Angular, TypeScript and Stockfish API.
+A recreation of classic chess built with Angular and TypeScript, integrating Stockfish API connectivity and FEN-driven board logic to deliver a fast, engine-backed competitive experience.
 
 
 ## <a name="project-structure">Project Structure</a>
@@ -26,6 +26,7 @@ An online chess game created with Angular, TypeScript and Stockfish API.
 chess/
 ├── src/
 │   ├── main.ts
+│   ├── chess.jpg
 │   ├── index.html
 │   ├── styles.css
 │   ├── favicon.ico
@@ -92,6 +93,6 @@ npm install
 # Runs the local on http://localhost:4200
 ng serve
 
-# Build the project (output path: dist/duck-hunt)
+# Build the project (output path: dist/chess)
 ng build
 ```

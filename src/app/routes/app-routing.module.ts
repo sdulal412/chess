@@ -13,7 +13,8 @@ const routes: Routes = [
     path: 'against-computer',
     component: ComputerModeComponent,
     title: 'Chess | vs Computer',
-  }
+  },
+  { path: '', redirectTo: 'against-computer', pathMatch: 'full' }
 ];
 
 @NgModule({
