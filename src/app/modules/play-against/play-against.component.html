@@ -1,0 +1,42 @@
+<div class="dialog-container">
+  <header class="dialog-header">
+    <h2 class="dialog-title">Difficulty level</h2>
+  </header>
+
+  <section class="dialog-body">
+    <div class="stockfish-strength-container">
+      <div
+        class="strength-div"
+        (click)="selectStockfishLevel(level)"
+        *ngFor="let level of stockfishLevels"
+        [ngClass]="{ selected: level === stockfishLevel }"
+      >
+        {{ level }}
+      </div>
+    </div>
+
+    <div class="choose-side">
+      <img
+        class="king-img"
+        draggable="false"
+        (click)="play('w')"
+        src="assets/pieces/white king.svg"
+      />
+      <img
+        class="king-img"
+        draggable="false"
+        (click)="play('b')"
+        src="assets/pieces/black king.svg"
+      />
+    </div>
+  </section>
+
+  <footer class="dialog-footer">
+    <button
+      class="cancel-btn"
+      (click)="closeDialog()"
+    >
+      Cancel
+    </button>
+  </footer>
+</div>

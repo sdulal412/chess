@@ -1,0 +1,116 @@
+<div class="main-wrapper">
+  <div class="unified-console">
+    <div class="controls-column">
+      <button
+        class="menu-btn"
+        (click)="playAgainstFriend()"
+        title="Play Friend"
+      >
+        👥<span class="btn-label">Friend</span>
+      </button>
+      <button class="menu-btn" (click)="playAgainstComputer()" title="Play CPU">
+        🤖<span class="btn-label">Stockfish</span>
+      </button>
+
+      <button
+        title="Restart"
+        (click)="restartGame()"
+        class="menu-btn restart-btn"
+      >
+        🔄<span class="btn-label">Restart</span>
+      </button>
+
+      <div class="spacer"></div>
+
+      <button class="menu-btn" (click)="flipBoard()" title="Flip Board">
+        ↔️<span class="btn-label">Flip</span>
+      </button>
+    </div>
+
+    <div class="game-area">
+      <div class="board-container">
+        <div class="thinking-wrapper">
+          <div *ngIf="isThinking" class="thinking-indicator">
+            <div class="spinner-dot"></div>
+            <span>Stockfish is thinking...</span>
+          </div>
+        </div>
+
+        <div class="chess-board" [ngClass]="{ rotated: flipMode }">
+          <ng-container
+            *ngFor="
+            let x = index;
+            trackBy: trackByRow
+            let row of chessBoardView;"
+          >
+            <div
+              class="square"
+              (click)="move(x, y)"
+              [ngClass]="{
+                dark: isSquareDark(x, y),
+                light: !isSquareDark(x, y),
+                'selected-square': isSquareSelected(x, y),
+              }"
+              *ngFor="let piece of row; let y = index; trackBy: trackBySquare"
+            >
+              <span class="coord rank" *ngIf="y === 0">{{ 8 - x }}</span>
+              <span class="coord file" *ngIf="x === 7">{{ getLabel(y) }}</span>
+
+              <div
+                class="safe-circle"
+                *ngIf="isSquareSafeForSelectedPiece(x, y)"
+              >
+              </div>
+
+              <ng-container *ngIf="piece">
+                <img
+                  class="piece"
+                  draggable="false"
+                  [src]="pieceImagePaths[piece]"
+                  [attr.id]="'p-' + x + '-' + y + '-' + gameHistoryPointer"
+                />
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-header">📜 SESSION LOG</div>
+      <div class="move-list-wrapper">
+        <app-move-list
+          [moveList]="moveList"
+          [gameHistoryLength]="gameHistoryLength"
+          [gameHistoryPointer]="gameHistoryPointer"
+          (showPreviousPositionEvent)="showPreviousPosition($event)"
+        ></app-move-list>
+      </div>
+    </div>
+  </div>
+
+  <div class="promotion-overlay" *ngIf="isPromotionActive">
+    <div class="promotion-menu">
+      <div
+        class="promotion-piece"
+        (click)="promotePiece(p)"
+        *ngFor="let p of promotionPieces()"
+      >
+        <img [src]="pieceImagePaths[p]" draggable="false" />
+      </div>
+      <div class="promotion-piece close" (click)="closePawnPromotionDialog()">
+        ✕
+      </div>
+    </div>
+  </div>
+
+  <div class="game-over-overlay" *ngIf="gameOverMessage">
+    <div class="game-over-banner">
+      <div class="retro-header">GAME OVER</div>
+      <p class="status-text">{{ gameOverMessage }}</p>
+      <div class="button-group">
+        <button class="retry-btn" (click)="restartGame()">Play Again</button>
+      </div>
+    </div>
+  </div>
+</div>
