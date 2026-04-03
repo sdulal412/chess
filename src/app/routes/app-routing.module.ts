@@ -14,11 +14,17 @@ const routes: Routes = [
     component: ComputerModeComponent,
     title: 'Chess | vs Computer',
   },
-  { path: '', redirectTo: 'against-computer', pathMatch: 'full' },
+  { path: '', redirectTo: 'against-friend', pathMatch: 'full' },
+  { path: '**', redirectTo: 'against-friend' },
 ];
 
 @NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      bindToComponentInputs: true,
+    }),
+  ],
   exports: [RouterModule],
-  imports: [RouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}
