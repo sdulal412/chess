@@ -11,9 +11,7 @@ import { PlayAgainstComponent } from '../play-against/play-against.component';
   templateUrl: './nav-menu.component.html',
   imports: [MatToolbarModule, MatButtonModule, RouterModule, MatDialogModule],
 })
-
 export class NavMenuComponent {
-
   constructor(private dialog: MatDialog) {}
 
   public playAgainstComputer(): void {

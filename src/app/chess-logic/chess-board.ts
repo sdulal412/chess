@@ -7,10 +7,9 @@ import { Bishop } from './pieces/bishop';
 import { Knight } from './pieces/knight';
 import { FENConverter } from './FENConverter';
 import { columns } from '../modules/chess-board/models';
-import { CheckState, Color, Coords, FENChar, GameHistory, LastMove, MoveList, MoveType, SafeSquares } from './models';
+import { Color, Coords, FENChar, LastMove, MoveList, MoveType, CheckState, GameHistory, SafeSquares } from './models';
 
 export class ChessBoard {
-
   private _playerColor = Color.White;
   private _safeSquares: SafeSquares;
   private chessBoard: (Piece | null)[][];
@@ -206,12 +205,10 @@ export class ChessBoard {
     newY: number,
   ): boolean {
     const piece: Piece | null = this.chessBoard[prevX][prevY];
-    if (!piece)
-      return false;
+    if (!piece) return false;
 
     const newPiece: Piece | null = this.chessBoard[newX][newY];
-    if (newPiece && newPiece.color === piece.color)
-      return false;
+    if (newPiece && newPiece.color === piece.color) return false;
 
     this.chessBoard[prevX][prevY] = null;
     this.chessBoard[newX][newY] = piece;
@@ -468,7 +465,6 @@ export class ChessBoard {
     moveType: Set<MoveType>,
   ): void {
     if (piece instanceof King && Math.abs(newY - prevY) === 2) {
-
       const rookPositionX: number = prevX;
       const rookPositionY: number = newY > prevY ? 7 : 0;
       const rook = this.chessBoard[rookPositionX][rookPositionY] as Rook;
@@ -585,7 +581,6 @@ export class ChessBoard {
         (piece) =>
           piece.piece instanceof Knight || piece.piece instanceof Bishop,
       );
-
     else if (whitePieces.length === 2 && blackPieces.length === 2) {
       const whiteBishop = whitePieces.find(
         (piece) => piece.piece instanceof Bishop,

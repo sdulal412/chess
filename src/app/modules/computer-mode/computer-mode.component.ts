@@ -6,16 +6,17 @@ import { ChessBoard } from 'src/app/chess-logic/chess-board';
 import { Subscription, defaultIfEmpty, firstValueFrom } from 'rxjs';
 import { ChessBoardService } from '../chess-board/chess-board.service';
 import { ChessBoardComponent } from '../chess-board/chess-board.component';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { OnInit, inject, OnDestroy, Component, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-computer-mode',
   styleUrls: ['../chess-board/chess-board.component.css'],
   templateUrl: '../chess-board/chess-board.component.html',
 })
-
-export class ComputerModeComponent extends ChessBoardComponent implements OnInit, OnDestroy {
-
+export class ComputerModeComponent
+  extends ChessBoardComponent
+  implements OnInit, OnDestroy
+{
   public override isThinking: boolean = false;
   private computerSubscriptions$ = new Subscription();
   private stockfishService = inject(StockfishService);
@@ -79,8 +80,7 @@ export class ComputerModeComponent extends ChessBoardComponent implements OnInit
   }
 
   private async handleComputerMove(FEN: string): Promise<void> {
-    if (this.chessBoard.isGameOver)
-      return;
+    if (this.chessBoard.isGameOver) return;
 
     this.isThinking = true;
     this.cdr.detectChanges();

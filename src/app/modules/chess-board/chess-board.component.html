@@ -39,9 +39,11 @@
         <div class="chess-board" [ngClass]="{ rotated: flipMode }">
           <ng-container
             *ngFor="
-            let x = index;
-            trackBy: trackByRow
-            let row of chessBoardView;"
+              let x = index;
+              trackBy: trackByRow;
+              let row;
+              of: chessBoardView
+            "
           >
             <div
               class="square"
@@ -59,8 +61,7 @@
               <div
                 class="safe-circle"
                 *ngIf="isSquareSafeForSelectedPiece(x, y)"
-              >
-              </div>
+              ></div>
 
               <ng-container *ngIf="piece">
                 <img

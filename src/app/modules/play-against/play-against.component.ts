@@ -12,9 +12,7 @@ import { StockfishService } from '../computer-mode/stockfish.service';
   styleUrls: ['./play-against.component.css'],
   templateUrl: './play-against.component.html',
 })
-
 export class PlayAgainstComponent {
-
   public stockfishLevel: number = 1;
   public stockfishLevels: readonly number[] = [1, 2, 3, 4, 5];
 

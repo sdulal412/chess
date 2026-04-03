@@ -12,7 +12,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-app-root, 
+app-root,
 app-chess-board {
   width: 100%;
   height: 100%;

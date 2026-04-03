@@ -53,7 +53,7 @@
 .moves-scroll-area {
   flex-grow: 1;
   padding: 15px;
-  min-height: 0; 
+  min-height: 0;
   overflow-x: hidden;
   background: #1a1917;
   overflow-y: auto !important;
@@ -69,8 +69,8 @@
   background: #1a1917;
   border-left: 1px solid #333;
 }
-.moves-scroll-area::-webkit-scrollbar-thumb { 
-  border-radius: 4px; 
+.moves-scroll-area::-webkit-scrollbar-thumb {
+  border-radius: 4px;
   background: #3d3b38;
   border: 1px solid #000;
 }
@@ -84,10 +84,10 @@
   grid-template-columns: 35px 1fr 1fr;
 }
 
-.num { 
-  color: #555; 
-  font-size: 12px; 
-  font-family: monospace; 
+.num {
+  color: #555;
+  font-size: 12px;
+  font-family: monospace;
 }
 
 /* Move Buttons & Active State */
@@ -103,8 +103,8 @@
   transition: background 0.2s;
 }
 
-.move-btn:hover { 
-  color: #fff; 
+.move-btn:hover {
+  color: #fff;
   background: #333;
 }
 
