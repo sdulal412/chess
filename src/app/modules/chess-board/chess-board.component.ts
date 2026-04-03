@@ -7,16 +7,14 @@ import { ChessBoard } from 'src/app/chess-logic/chess-board';
 import { FENConverter } from 'src/app/chess-logic/FENConverter';
 import { PlayAgainstComponent } from '../play-against/play-against.component';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { CheckState, Color, Coords, FENChar, GameHistory, LastMove, MoveList, MoveType, SafeSquares, pieceImagePaths } from 'src/app/chess-logic/models';
+import { Color, Coords, FENChar, LastMove, MoveList, MoveType, CheckState, SafeSquares, GameHistory, pieceImagePaths } from 'src/app/chess-logic/models';
 
 @Component({
   selector: 'app-chess-board',
   styleUrls: ['./chess-board.component.css'],
   templateUrl: './chess-board.component.html',
 })
-
 export class ChessBoardComponent implements OnInit, OnDestroy {
-
   public flipMode: boolean = false;
   public isThinking: boolean = false;
 
@@ -172,7 +170,6 @@ export class ChessBoardComponent implements OnInit, OnDestroy {
     newY: number,
     promotedPiece: FENChar | null,
   ): void {
-
     this.unmarkingPreviouslySlectedAndSafeSquares();
     this.chessBoard.move(prevX, prevY, newX, newY, promotedPiece);
     this.chessBoardView = this.chessBoard.chessBoardView.map((row) => [...row]);
@@ -224,7 +221,7 @@ export class ChessBoardComponent implements OnInit, OnDestroy {
     const s = this.selectedSquare as any;
     return s.x === x && s.y === y;
   }
-  
+
   public isSquareSafeForSelectedPiece(x: number, y: number): boolean {
     return this.pieceSafeSquares.some((c) => c.x === x && c.y === y);
   }
@@ -250,7 +247,7 @@ export class ChessBoardComponent implements OnInit, OnDestroy {
 
   private markLastMoveAndCheckState(
     lastMove: LastMove | undefined,
-    checkState: CheckState
+    checkState: CheckState,
   ): void {
     this.lastMove = lastMove;
     this.checkState = checkState;

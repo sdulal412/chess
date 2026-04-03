@@ -10,12 +10,8 @@ import { PlayAgainstComponent } from './modules/play-against/play-against.compon
 import { ComputerModeComponent } from './modules/computer-mode/computer-mode.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ChessBoardComponent,
-    ComputerModeComponent
-  ],
-  
+  declarations: [AppComponent, ChessBoardComponent, ComputerModeComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,5 +24,4 @@ import { ComputerModeComponent } from './modules/computer-mode/computer-mode.com
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

@@ -35,11 +35,7 @@
   </div>
 
   <div class="moves-scroll-area" #scrollContainer>
-    <div
-    #moveRow
-    class="move-row"
-    *ngFor="let move of moveList; let i = index"
-    >
+    <div #moveRow class="move-row" *ngFor="let move of moveList; let i = index">
       <span class="num">{{ i + 1 }}.</span>
       <div
         class="move-btn"

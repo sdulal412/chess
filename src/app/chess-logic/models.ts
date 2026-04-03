@@ -11,18 +11,18 @@ export type Coords = {
 };
 
 export enum FENChar {
-    BlackPawn = 'p',
-    WhitePawn = 'P',
-    BlackRook = 'r',
-    WhiteRook = 'R',
-    BlackKing = 'k',
-    WhiteKing = 'K',
-    BlackQueen = 'q',
-    WhiteQueen = 'Q',
-    BlackBishop = 'b',
-    WhiteBishop = 'B',
-    BlackKnight = 'n',
-    WhiteKnight = 'N',
+  BlackPawn = 'p',
+  WhitePawn = 'P',
+  BlackRook = 'r',
+  WhiteRook = 'R',
+  BlackKing = 'k',
+  WhiteKing = 'K',
+  BlackQueen = 'q',
+  WhiteQueen = 'Q',
+  BlackBishop = 'b',
+  WhiteBishop = 'B',
+  BlackKnight = 'n',
+  WhiteKnight = 'N',
 }
 
 export const pieceImagePaths: Readonly<Record<FENChar, string>> = {
@@ -43,31 +43,31 @@ export const pieceImagePaths: Readonly<Record<FENChar, string>> = {
 export type SafeSquares = Map<string, Coords[]>;
 
 export enum MoveType {
-    Check,
-    Capture,
-    Castling,
-    Promotion,
-    CheckMate,
-    BasicMove,
+  Check,
+  Capture,
+  Castling,
+  Promotion,
+  CheckMate,
+  BasicMove,
 }
 
 export type LastMove = {
-    piece: Piece;
-    prevX: number;
-    prevY: number;
-    currX: number;
-    currY: number;
-    moveType: Set<MoveType>;
+  piece: Piece;
+  prevX: number;
+  prevY: number;
+  currX: number;
+  currY: number;
+  moveType: Set<MoveType>;
 };
 
 type KingChecked = {
-    x: number;
-    y: number;
-    isInCheck: true;
+  x: number;
+  y: number;
+  isInCheck: true;
 };
 
 type KingNotChecked = {
-    isInCheck: false;
+  isInCheck: false;
 };
 
 export type CheckState = KingChecked | KingNotChecked;
@@ -75,8 +75,7 @@ export type CheckState = KingChecked | KingNotChecked;
 export type MoveList = [string, string?][];
 
 export type GameHistory = {
-
-    checkState: CheckState;
-    board: (FENChar | null)[][];
-    lastMove: LastMove | undefined;
+  checkState: CheckState;
+  board: (FENChar | null)[][];
+  lastMove: LastMove | undefined;
 }[];

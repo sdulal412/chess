@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { MoveList } from 'src/app/chess-logic/models';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Input, Output, ViewChild, QueryList, Component, ElementRef, EventEmitter, ViewChildren, AfterViewInit } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -11,9 +11,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Quer
   templateUrl: './move-list.component.html',
   imports: [CommonModule, MatButtonModule, MatIconModule],
 })
-
 export class MoveListComponent implements AfterViewInit {
-
   @Input({ required: true }) public moveList!: MoveList;
   @Input({ required: true }) public gameHistoryPointer: number = 0;
   @Input({ required: true }) public gameHistoryLength: number = 1;
